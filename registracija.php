@@ -17,12 +17,14 @@ $priimek = $_POST['priimek'];
 $email = $_POST['email'];
 $geslo = $_POST['geslo'];
 
+$hash_geslo = password_hash( $geslo,  PASSWORD_DEFAULT);
+
 
 
 if(!empty($ime) && !empty($priimek) && !empty($email) && !empty($geslo) )
 {
     $stmt = $conn->prepare("INSERT INTO uporabniki (Ime, priimek, email, geslo) VALUES (?,?,?,?)");
-    $stmt->bind_param("ssss", $ime, $priimek, $email, $geslo);
+    $stmt->bind_param("ssss", $ime, $priimek, $email, $hash_geslo);
     $stmt->execute();
     echo("Vpis uspešen");
     header("refresh: 2, url=login.html");

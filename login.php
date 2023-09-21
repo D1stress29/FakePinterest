@@ -13,18 +13,23 @@ if(isset($_POST['Pošlji']))
     if(strlen($_POST['geslo']) < 5)
     {
 die("geslo mora vsebovati vsaj 4 črke/znake ");
-    }
-
+    } 
+    
     $email = $_POST['email'];
     $geslo = $_POST['geslo'];
-    $query = "SELECT * FROM uporabniki WHERE email = '$email' AND geslo = '$geslo'";
+    
+    $query = "SELECT * FROM uporabniki WHERE email = '$email'";
     $result = mysqli_query($conn, $query);
 
+    
     if(mysqli_num_rows($result) === 1)
     {
+        $hashed_password = $row['geslo'];
+        if(password_verify( $geslo, $hashed_password));
+        {
         echo "Logged in!";
         header('Location: main_page.html');
-    
+        }
     }
     else
     {
