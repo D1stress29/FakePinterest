@@ -24,11 +24,12 @@ die("geslo mora vsebovati vsaj 4 črke/znake ");
     
     if(mysqli_num_rows($result) === 1)
     {
+        $row = mysqli_fetch_assoc($result);
         $hashed_password = $row['geslo'];
-        if(password_verify( $geslo, $hashed_password));
+        if(password_verify($geslo, $hashed_password))
         {
-        echo "Logged in!";
-        header('Location: main_page.html');
+            echo "Logged in!";
+            header('Location: main_page.html');
         }
     }
     else
