@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="main.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
@@ -9,6 +10,7 @@
 </head>
 <body>
     <header>
+        <img src="Logo-removebg-preview.png" class="logo">
         <b>Picture-esque</b>
     <a href="main_page.html">Home</a>
     <a href="create_pin.html">Create</a>
