@@ -11,7 +11,7 @@
 <body>
     <header>
         <img src="Logo-removebg-preview.png" class="logo">
-        <b>Picture-esque</b>
+       
     <a href="main_page.html">Home</a>
     <a href="create_pin.html">Create</a>
     </header>
