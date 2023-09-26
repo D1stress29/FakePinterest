@@ -29,13 +29,18 @@ die("geslo mora vsebovati vsaj 4 črke/znake ");
         if(password_verify($geslo, $hashed_password))
         {
             echo "Logged in!";
-            header('Location: main_page.html');
+            header('Location: main_page.php');
+        }
+        else
+        {
+            echo "Poskusite znova";
+            header("refresh: 2; url=login.html");
         }
     }
     else
     {
         echo ("ta uporabnik ne obstaja");
-        header('refresh:2; url=login_page.php');
+        header('refresh:2; url=login.html');
     } 
 
 }
