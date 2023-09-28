@@ -12,7 +12,7 @@
     <header>
         <img src="Logo-removebg-preview.png" class="logo">
        
-    <a href="main_page.html">Home</a>
+    <a href="main_page.php">Home</a>
     <a href="create_pin.html">Create</a>
     </header>
     

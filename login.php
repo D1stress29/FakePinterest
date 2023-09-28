@@ -33,13 +33,13 @@ die("geslo mora vsebovati vsaj 4 črke/znake ");
         }
         else
         {
-            echo "Poskusite znova";
+            echo "Try again";
             header("refresh: 2; url=login.html");
         }
     }
     else
     {
-        echo ("ta uporabnik ne obstaja");
+        echo ("This user does not exist");
         header('refresh:2; url=login.html');
     } 
 
