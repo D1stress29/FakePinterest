@@ -37,12 +37,27 @@ $opis = $_POST['opis'];
 $zanr_id = $_POST['zanr'];
 
 
-$stmt = $conn->prepare = "INSERT INTO pini (url, naslov, opis, zanr_id ) VALUES (?,?,?,?)";
-$stmt -> bind_param("sssi", $target_file, $naslov, $opis, $zanr_id);
+$stmt = $conn->prepare("INSERT INTO pini (url, naslov, opis, zanr_id) VALUES (?, ?, ?, ?)");
 
-$stmt->execute();
-    echo("Vnos uspešen");
-    header("refresh: 2, url=main_page.php");
-$result = mysqli_query($conn, $query);
+if (!$stmt) {
+    die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
+}
 
+// Bind parameters to the prepared statement
+if (!$stmt->bind_param("sssi", $target_file, $naslov, $opis, $zanr_id)) {
+    die("Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error);
+}
+
+// Execute the prepared statement
+if (!$stmt->execute()) {
+    die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
+}
+
+echo("Vnos uspešen");
+
+// Close the prepared statement
+$stmt->close();
+
+// Redirect to main_page.php
+header("refresh: 2; url=main_page.php");
 ?>

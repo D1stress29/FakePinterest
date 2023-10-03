@@ -10,15 +10,28 @@
 </head>
 <body>
     <header>
-        <img src="Logo-removebg-preview.png" class="logo">
-       
-    <a href="main_page.php">Home</a>
-    <a href="create_pin.html">Create</a>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+  <img src="Logo-removebg-preview.png" alt="Logo" width="60" height="24" class="d-inline-block align-text-top">
+    <a class="navbar-brand" href="#">Picture-esque</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="main_page.php">Home</a>
+        <a class="nav-link" aria-current="page" href="create_pin.php">Create</a>
+      </div>
+    </div>
+  </div>
+</nav>
     </header>
     
 <div>
     <?php include('main.php'); ?>
 </div>
+
 
 
 
