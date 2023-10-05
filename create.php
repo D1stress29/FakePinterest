@@ -3,7 +3,7 @@ include "connection.php";
 
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if($check !== false) 
   {
@@ -20,7 +20,7 @@ $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     
   }
 
-$allowed_filetypes = array('jpg','gif','bmp','png');
+$allowed_filetypes = array('jpg','gif','png','jfif');
 $max_filesize = 524288;
 
 if(!in_array($imageFileType, $allowed_filetypes))
@@ -28,6 +28,7 @@ if(!in_array($imageFileType, $allowed_filetypes))
     echo $imageFileType;
     die('The file you attempted to upload is not allowed.');
 }
+
 
 
 
@@ -52,9 +53,14 @@ if (!$stmt->bind_param("sssi", $target_file, $naslov, $opis, $zanr_id)) {
 if (!$stmt->execute()) {
     die("Execution failed: (" . $stmt->errno . ") " . $stmt->error);
 }
-
-echo("Vnos uspešen");
-
+else
+{
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+} else {
+    echo "Sorry, there was an error uploading your file.";
+}
+}
 // Close the prepared statement
 $stmt->close();
 

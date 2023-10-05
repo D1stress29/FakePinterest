@@ -41,7 +41,7 @@
 
     include "connection.php";
 
-    $sql = "SELECT zanr FROM zanr_pinov";
+    $sql = "SELECT * FROM zanr_pinov";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) 
