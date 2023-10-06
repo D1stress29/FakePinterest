@@ -21,10 +21,13 @@ if(mysqli_num_rows($result) === 1)
     $naslov = $row['naslov'];
     $opis = $row['opis'];
 
-echo "<img src='$url' alt='Image'>";
-echo  $naslov;
-echo "<br>";
+echo '<span class="naslov">' . $naslov . '</span>';
+echo '<br>';
 echo $opis;
+echo '<br>';
+echo "<img src='$url' alt='Image'>";
+
+
 
 }
 
@@ -36,16 +39,27 @@ if(mysqli_num_rows($result) === 1)
 $row = mysqli_fetch_assoc($result);
 $ime = $row['ime'];
 ?>
-<form method="post" action="board_form.php">
-<label for="ime">Select a value:</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="view.css" rel="stylesheet">
+</head>
+<body>
+   <form method="post" action="board_form.php">
+<label for="ime">Select a board:</label>
 <select name="ime" id="ime">
     <option value="<?php echo $ime; ?>"><?php echo $ime; ?></option>
 </select>
 <input type="submit" value="Save">
-</form>
+</form> 
+</body>
+</html>
+
 <?php
 }
-
 
 else
 {
