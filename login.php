@@ -1,6 +1,8 @@
 <?php
 require_once "connection.php";
 
+session_start();
+
 if(isset($_POST['Pošlji']))
 {
 
@@ -15,16 +17,18 @@ if(isset($_POST['Pošlji']))
 die("geslo mora vsebovati vsaj 4 črke/znake ");
     } 
     
+    
     $email = $_POST['email'];
     $geslo = $_POST['geslo'];
     
     $query = "SELECT * FROM uporabniki WHERE email = '$email'";
     $result = mysqli_query($conn, $query);
 
-    
+   
     if(mysqli_num_rows($result) === 1)
     {
         $row = mysqli_fetch_assoc($result);
+         $_SESSION['id'] = $row['id'];
         $hashed_password = $row['geslo'];
         if(password_verify($geslo, $hashed_password))
         {
