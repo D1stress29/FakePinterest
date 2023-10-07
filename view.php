@@ -3,7 +3,7 @@ include "connection.php";
 session_start();    
 $user_id = $_SESSION['id'];
 $id = $_GET['id'];
-
+$_SESSION['pin_id'] = $id;
 if (!isset($_SESSION['id']))
  {
     header("Location: login.html");
@@ -38,6 +38,7 @@ if(mysqli_num_rows($result) === 1)
 {
 $row = mysqli_fetch_assoc($result);
 $ime = $row['ime'];
+$board_id = $row['id']
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +52,7 @@ $ime = $row['ime'];
    <form method="post" action="board_form.php">
 <label for="ime">Select a board:</label>
 <select name="ime" id="ime">
-    <option value="<?php echo $ime; ?>"><?php echo $ime; ?></option>
+    <option value="<?php echo $board_id; ?>"><?php echo $ime; ?></option>
 </select>
 <input type="submit" value="Save">
 </form> 
