@@ -27,11 +27,11 @@ if($geslo == $potrdigeslo)
     $stmt = $conn->prepare("INSERT INTO uporabniki (Ime, priimek, email, geslo) VALUES (?,?,?,?)");
     $stmt->bind_param("ssss", $ime, $priimek, $email, $hash_geslo);
     $stmt->execute();
-    echo("Vpis uspešen");
+    echo("Login successful");
     header("refresh: 2, url=login.html");
     }
-else echo ("Eno izmed polj je prazno");
+else echo ("One of the fields is missing / does not match our parameters");
 }
-else echo ("Gesli se ne ujemata");
+else echo ("The passwords do not match");
 
     ?>

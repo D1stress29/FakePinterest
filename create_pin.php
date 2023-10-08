@@ -21,6 +21,7 @@
   <div class="navbar-nav">
     <a class="nav-link active" aria-current="page" href="main_page.php">Home</a>
     <a class="nav-link" aria-current="page" href="create_pin.php">Create</a>
+    <a class="nav-link" aria-current="page" href="boardi.php" active>Boards</a>
   </div>
 </div>
 </div>
@@ -40,6 +41,7 @@
     <?php
 
     include "connection.php";
+    include "login_check.php";
 
     $sql = "SELECT * FROM zanr_pinov";
     $result = $conn->query($sql);
