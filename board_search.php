@@ -49,39 +49,35 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) 
   while ($row = mysqli_fetch_assoc($result)) {
     $xx_id = $row['id'];
-}
-
-$pin_id = null;
-
-$sql = "SELECT pin_id FROM boardi_pini WHERE board_id = $xx_id";
-$result = mysqli_query($conn,$sql);
-
-if (mysqli_num_rows($result) > 0) 
-{
-  $row = mysqli_fetch_assoc($result);
-  $pin_id = $row['pin_id'];
-} 
-else 
-  {
-  die("No matching pins found for the selected board.");  
   }
- 
- 
-
-$query = "SELECT * FROM pini WHERE id = $pin_id";
-$result = mysqli_query($conn, $query);
 
 
-if (mysqli_num_rows($result) === 1) {
-  $row = mysqli_fetch_assoc($result);
-  $url = $row['url'];
-  $pin_id = $row['id'];
-  echo "<a href='view.php?id=$id'><img src='$url' alt='Image'></a>";
-} else {
-  echo "No matching pins found.";
 
-}
 
+  $sql = "SELECT pin_id FROM boardi_pini WHERE board_id = $xx_id";
+  $result = mysqli_query($conn, $sql);
+  
+  if (mysqli_num_rows($result) > 0) {
+      while ($row = mysqli_fetch_assoc($result)) {
+          $pin_id = $row['pin_id'];
+  
+          // Query and display the pins associated with this board
+          $query = "SELECT * FROM pini WHERE id = $pin_id";
+          $pinResult = mysqli_query($conn, $query);
+  
+          if (mysqli_num_rows($pinResult) === 1) {
+              $pinRow = mysqli_fetch_assoc($pinResult);
+              $url = $pinRow['url'];
+              $pin_id = $pinRow['id'];
+              echo "<a href='view.php?id=$pin_id'><img src='$url' alt='Image'></a>";
+          } else {
+              echo "No matching pins found for the selected board.";
+          }
+      }
+  } else {
+      die("No matching pins found for the selected board.");
+  }
+  
 ?>
 
 

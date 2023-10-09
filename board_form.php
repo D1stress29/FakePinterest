@@ -10,5 +10,6 @@ $stmt->bind_param("ii", $board_id, $pin_id);
 
 $stmt->execute();
     echo("Slika je bila dodana v board.");
+    header("refresh: 2, url='main_page.php'");
  
 ?>
